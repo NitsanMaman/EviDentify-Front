@@ -1,12 +1,20 @@
 /* AdmissionForm.css */
 .admission-form {
-  max-width: 800px;
+  max-width: 80%;
   margin: 50px auto;
   padding: 20px;
   background: #f3f3f3;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+.admission-form img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
 
 .admission-form h2 {
   text-align: center;

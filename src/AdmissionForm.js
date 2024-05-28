@@ -569,7 +569,7 @@ const AdmissionForm = React.memo(() => {
         <label>
           Photo:
           <input className="file" type="file" name="photo" onChange={handleFileChange} disabled={isFormFilled} />
-          {isFormFilled && formData.photo && <img src={formData.photo} alt="Uploaded" />}
+          {isFormFilled && formData.photo && <img src={formData.photo} alt="Uploaded" className="responsive-image" />}
         </label>
         <LocationForm 
           location={formData.location} 
