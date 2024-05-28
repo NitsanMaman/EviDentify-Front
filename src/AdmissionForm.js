@@ -174,24 +174,33 @@ const AdmissionForm = React.memo(() => {
     let startY = 0;
     let hasMoved = false;
   
-    const startDrawing = e => {
+    const startDrawing = (e) => {
       if (isFormFilled) return; // Prevent drawing if form is filled
       isDrawing = true;
       hasMoved = false;
-      const { clientX, clientY } = e;
       const rect = canvas.getBoundingClientRect();
-      startX = clientX - rect.left;
-      startY = clientY - rect.top;
+      if (e.type === 'mousedown' || e.type === 'mousemove') {
+        startX = e.clientX - rect.left;
+        startY = e.clientY - rect.top;
+      } else if (e.type === 'touchstart' || e.type === 'touchmove') {
+        startX = e.touches[0].clientX - rect.left;
+        startY = e.touches[0].clientY - rect.top;
+        e.preventDefault(); // Prevent default behavior
+      }
       ctx.beginPath();
       ctx.moveTo(startX, startY);
     };
   
-    const draw = e => {
+    const draw = (e) => {
       if (!isDrawing) return;
       hasMoved = true;
-      const { clientX, clientY } = e;
       const rect = canvas.getBoundingClientRect();
-      ctx.lineTo(clientX - rect.left, clientY - rect.top);
+      if (e.type === 'mousemove') {
+        ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+      } else if (e.type === 'touchmove') {
+        ctx.lineTo(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top);
+        e.preventDefault(); // Prevent default behavior
+      }
       ctx.stroke();
     };
   
@@ -202,18 +211,33 @@ const AdmissionForm = React.memo(() => {
       saveSignature(canvas.toDataURL()); // Save the drawn signature
     };
   
+    // Mouse events
     canvas.addEventListener('mousedown', startDrawing);
     canvas.addEventListener('mousemove', draw);
     canvas.addEventListener('mouseup', stopDrawing);
     canvas.addEventListener('mouseleave', stopDrawing);
   
+    // Touch events
+    canvas.addEventListener('touchstart', startDrawing);
+    canvas.addEventListener('touchmove', draw);
+    canvas.addEventListener('touchend', stopDrawing);
+    canvas.addEventListener('touchcancel', stopDrawing);
+  
     return () => {
+      // Mouse events
       canvas.removeEventListener('mousedown', startDrawing);
       canvas.removeEventListener('mousemove', draw);
       canvas.removeEventListener('mouseup', stopDrawing);
       canvas.removeEventListener('mouseleave', stopDrawing);
+  
+      // Touch events
+      canvas.removeEventListener('touchstart', startDrawing);
+      canvas.removeEventListener('touchmove', draw);
+      canvas.removeEventListener('touchend', stopDrawing);
+      canvas.removeEventListener('touchcancel', stopDrawing);
     };
   }, [signatureData, isFormFilled]); // React to changes in signatureData or form fill status
+  
   
 
   const clearSignature = () => {
