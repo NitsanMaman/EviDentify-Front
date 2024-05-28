@@ -42,8 +42,10 @@ const ManagerPage = () => {
   };
 
   const handleAddForm = () => {
-    navigate(`/admission-form?uid=${uidPrefix}&role=manager`);
+    const randomNumber = Math.floor(Math.random() * 100000); // Generate a random number
+    navigate(`/admission-form?uid=${uidPrefix}${randomNumber}&role=manager`);
   };
+  
 
   return (
     <>
