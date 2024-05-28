@@ -1,8 +1,8 @@
 import React from 'react';
-import './App.css';
-import AdmissionForm from './AdmissionForm';
-import ManagerPage from './ManagerPage'; // Import the ManagerPage component
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import AdmissionForm from './AdmissionForm';
+import ManagerPage from './ManagerPage';
+import './App.css';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
         <header className="App-header">
           <Routes>
             <Route path="/admission-form" element={<AdmissionForm />} />
-            <Route path="/manager-page" element={<ManagerPage />} /> {/* Add the route for the manager page */}
+            <Route path="/manager-page" element={<ManagerPage />} />
             {/* other routes */}
           </Routes>
         </header>
