@@ -6,6 +6,7 @@ import { useLocation } from 'react-router-dom';
 import LocationForm from './LocationForm';
 import { useNavigate } from 'react-router-dom';
 
+const Server_URL = process.env.REACT_APP_API_URL;
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -93,7 +94,7 @@ const AdmissionForm = React.memo(() => {
 
   useEffect(() => {
     if (uid) {
-      fetch(`http://localhost:5000/get-form-data/${uid}`)
+      fetch(`${Server_URL}/get-form-data/${uid}`)
         .then(res => res.json())
         .then(data => {
           if (data.fullName) {
@@ -328,7 +329,7 @@ const AdmissionForm = React.memo(() => {
     };
   
     try {
-      const response = await fetch('http://localhost:5000/submit-form', {
+      const response = await fetch(`${Server_URL}/submit-form`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(submissionData)
@@ -358,7 +359,7 @@ const AdmissionForm = React.memo(() => {
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/delete-form/${uid}`, { method: 'DELETE' });
+      const response = await fetch(`${Server_URL}/delete-form/${uid}`, { method: 'DELETE' });
       if (!response.ok) throw new Error('Failed to delete the form.');
       if (role === 'manager'){
         Swal.fire('Deleted', 'Form has been successfully deleted.', 'success').then(() => {

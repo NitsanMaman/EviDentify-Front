@@ -5,6 +5,8 @@ import { TableSortLabel } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import SearchIcon from '@mui/icons-material/Search';
 
+const Server_URL = process.env.REACT_APP_API_URL;
+
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
@@ -18,7 +20,7 @@ const ManagerPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/forms/${uidPrefix}`)
+    fetch(`${Server_URL}/api/forms/${uidPrefix}`)
       .then(response => response.json())
       .then(data => {
         const sortedData = data.sort((a, b) => a.uid > b.uid ? 1 : -1);
