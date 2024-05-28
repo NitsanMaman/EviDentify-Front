@@ -1,0 +1,288 @@
+/* AdmissionForm.css */
+.admission-form {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #f3f3f3;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.admission-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+
+h2 {
+  font-size: 4rem;
+  border-radius: 20px; /* Rounded corners for the balloon effect */
+  background: -webkit-linear-gradient(left, #f06, #a9e, #69f, rgb(238, 220, 187), #a9e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  font-weight: bold;
+  padding: 20px 40px; /* Padding to create space around the text */
+  border: 2px solid rgba(255, 255, 255, 0.5); /* Light border for subtle edge definition */
+  text-shadow: 2px 2px 2px rgba(150, 150, 150, 0.25); /* Softer text shadow for depth */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft box shadow for a lifted effect */
+  display: inline-block; /* Wraps the background closely around the text */
+}
+
+.admission-form label {
+  display: block;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.admission-form input[type="text"],
+.admission-form input[type="email"],
+.admission-form input[type="number"],
+.admission-form input[type="datetime-local"],
+.admission-form input[type="file"],
+.admission-form select,
+.admission-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.admission-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #5c6bc0;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.admission-form button:hover {
+  background-color: #3f51b5;
+}
+
+/* Adjust the file input to align with design */
+.admission-form input[type="file"] {
+  padding: 0;
+  border: none;
+}
+
+/* Styles for the declaration checkbox and text */
+.declaration {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.declaration input {
+  margin-right: 10px;
+}
+
+.signature-pad {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: auto;
+  height: auto; /* You can adjust the height as needed */
+  border: 1px solid #ccc; /* Border to delineate the canvas area */
+  margin-bottom: -15px;
+}
+
+.signature-buttons {
+  display: flex; /* This will place all child buttons in a row */
+  justify-content: center; /* This will center the buttons in the container */
+  flex: 1; /* Each button will take up an equal amount of space */
+  margin-bottom: 10px;
+  scale:80%;
+} 
+
+/* Style buttons for clear and save actions */
+.signature-buttons button {
+  background-color: grey;
+  width: 20%;
+  margin-right: 10px;
+  padding: 5px 15px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.signature-buttons button:hover {
+  background-color: lightgrey;
+}
+
+.signature-buttons button:active {
+  position: relative;
+  top: 1px;
+}
+
+.file{
+  margin-left: 35%;
+}
+
+.NOerror {
+  border: 1px solid #ccc;
+  background-color: white;
+}
+
+.error {
+  border: 2px solid red;
+  background-color: white;
+}
+
+.button-red{
+  border: 2px solid red;
+  background-color: red;
+}
+
+.map-container {
+  height: 400px; /* or any other fixed height */
+  width: 100%; /* or max-width if necessary */
+  margin-bottom: 20px; /* Space below the map */
+}
+
+.witness-list {
+  display: flex; /* Aligns children (witness-item) in a row */
+  overflow-x: auto; /* Allows horizontal scrolling */
+  margin-bottom: 10px; /* Space below the list */
+  padding: 5px; /* Padding around the items in the list */
+}
+
+.witness-item {
+  display: flex;
+  align-items: center;
+  background-color: #f0f0f0;
+  color: black;
+  margin-bottom: 5px;
+  font-size: 18px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-right: 10px; /* Space between items */
+}
+
+.witness-item span {
+  margin-right: 10px; /* Space between the text and the 'X' button */
+}
+
+.witness-item button {
+  background-color: grey;
+  width: 20px;
+  height: 20px;
+  line-height: 20px; /* Center the X vertically */
+  text-align: center;
+  padding: 0;
+  border-radius: 50%; /* Makes the button circular */
+  font-weight: bold;
+  font-size: 16px;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.witness-item button:hover {
+  background-color: lightgrey;
+}
+
+.progress-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: black;
+  font-size: 14px;
+  text-decoration-line: underline;
+}
+
+.progress-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  text-wrap: wrap;
+}
+
+.progress-step {
+  width: 100px;
+  height: 40px;
+  border: 2px solid #ccc;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: #e0e0e0;
+  color: black;
+  font-size: 16px;
+  
+}
+
+.progress-step.completed {
+  background-color: #4caf50;
+  color: black;
+}
+
+.progress-step.current {
+  width: 120px;
+  height: 50px;
+  background-color: #2195f3ac;
+  color: black;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.station-select {
+  width: 100%;
+  border: none;
+  background: none;
+  text-align: center;
+  text-wrap: wrap;
+}
+
+
+.Special-Handle-bar {
+  font-size: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  
+}
+
+.Special-Handle-bar label {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+  margin-Left: 1rem;
+  width: 20%; /* 4 items per row */
+  border: 1px solid #cccccc58;
+  border-radius: 80px;
+  
+}
+
+.Special-Handle-bar input[type="checkbox"] {
+
+  transform: scale(1.2);
+}
+
+.Special-Handle-bar label:last-child {
+  margin-bottom: 0;
+  
+}
+
+.Special-Handle-bar input[type="checkbox"]:checked + span {
+  font-weight: bold;
+  color: #007BFF;
+  background-color: #007BFF;
+  border: 1px solid #007BFF;
+  
+}
+
+

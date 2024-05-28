@@ -1,0 +1,33 @@
+/* LocationForm.css */
+.location-form {
+    position: relative;
+  }
+  
+  .address-input-container {
+    position: relative;
+  }
+  
+  .suggestions {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    z-index: 9999;
+    width: 100%;
+    border: 1px solid #ccc;
+    background-color: white;
+    max-height: 200px;
+    overflow-y: auto;
+    font-size: 12px; /* Smaller font size */
+    color: black;   /* Black font color */
+  }
+  
+  .suggestions li {
+    padding: 8px;
+    cursor: pointer;
+  }
+  
+  .suggestions li:hover {
+    background-color: #f0f0f0;
+  }
+  
