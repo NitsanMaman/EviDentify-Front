@@ -7,7 +7,7 @@ import LocationForm from './LocationForm';
 import { useNavigate } from 'react-router-dom';
 
 const Server_URL = process.env.REACT_APP_API_URL;
-
+let isEditing = false;
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
@@ -17,7 +17,7 @@ const AdmissionForm = React.memo(() => {
   const uid = query.get('uid'); 
   const role = query.get('role');
   let SubmitUpdate = "Submit";
-  if (role === 'manager'){
+  if (role === 'manager' && isEditing){
     SubmitUpdate = "Update";
   }
   const [currentStation, setCurrentStation] = useState("current station"); // Initialize as required
@@ -331,6 +331,10 @@ const AdmissionForm = React.memo(() => {
       });
       return; // Stop form submission
     }
+
+    if (role === 'manager' && isEditing){
+      handleDelete(true);
+    }
   
     // Compress the image before submission
     let compressedPhoto = formData.photo;
@@ -361,7 +365,7 @@ const AdmissionForm = React.memo(() => {
       if (!response.ok) throw new Error('Network response was not ok.');
       
       const result = await response.json();
-      if (role === 'manager') {
+      if (role === 'manager' && isEditing) {
         Swal.fire('Updated', 'Form data Updated successfully!', 'success').then(() => { window.location.reload(); });
       } else {
         Swal.fire('Success', 'Form data submitted successfully!', 'success').then(() => { window.location.reload(); });
@@ -369,6 +373,10 @@ const AdmissionForm = React.memo(() => {
     } catch (error) {
       console.error('Error:', error);
       Swal.fire('Error', 'Failed to submit form.', 'error');
+    }
+
+    if (role === 'manager' && isEditing){
+      isEditing = false;
     }
   };
   
@@ -385,7 +393,7 @@ const AdmissionForm = React.memo(() => {
     try {
       const response = await fetch(`${Server_URL}/delete-form/${uid}`, { method: 'DELETE' });
       if (!response.ok) throw new Error('Failed to delete the form.');
-      if (role === 'manager'){
+      if (role === 'manager' && !isEditing){
         Swal.fire('Deleted', 'Form has been successfully deleted.', 'success').then(() => {
           if (fromSubmit) {
             
@@ -402,6 +410,8 @@ const AdmissionForm = React.memo(() => {
 
   // Function to enable editing
   const enableEditing = () => {
+    isEditing = true;
+    SubmitUpdate = "Update";
     setIsFormFilled(false);
   };
 

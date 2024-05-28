@@ -1,0 +1,41 @@
+/* Add this CSS to make the table responsive */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th, .table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .table th {
+    background-color: #f4f4f4;
+  }
+  
+  .table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Make the search and add icon more responsive */
+  .toolbar {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 10px;
+  }
+  
+  @media (min-width: 768px) {
+    .toolbar {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  
